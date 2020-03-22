@@ -1,4 +1,4 @@
-module DynFX {
+module dynfx {
     requires javafx.controls;
     requires javafx.graphics;
     requires org.dyn4j;

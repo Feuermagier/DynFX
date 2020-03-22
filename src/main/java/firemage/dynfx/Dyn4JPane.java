@@ -18,7 +18,6 @@ public class Dyn4JPane extends Canvas implements TimeStepListener {
     // Simulation steps per second
     private final DoubleProperty currentSPS = new SimpleDoubleProperty(0);
 
-    private final AnimationTimer timer;
     private final FXSimulation simulation;
 
     private final double pixelsPerMeter;
@@ -42,7 +41,7 @@ public class Dyn4JPane extends Canvas implements TimeStepListener {
         widthProperty().addListener(e -> repaint());
         heightProperty().addListener(e -> repaint());
 
-        timer = new DifferenceAnimationTimer((now, diff) -> {
+        AnimationTimer timer = new DifferenceAnimationTimer((now, diff) -> {
             if (started) {
                 currentFPS.set(MS_PER_SECOND / diff);
                 simulation.update(diff / MS_PER_SECOND);
