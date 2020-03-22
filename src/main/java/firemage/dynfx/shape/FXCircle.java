@@ -11,8 +11,12 @@ public class FXCircle extends FXShape {
 
     private final Circle circle;
 
-    public FXCircle(Circle circle, Paint paint) {
-        this(circle, paint, null);
+    public FXCircle(double radius, Paint paint) {
+        this(radius, paint, null);
+    }
+
+    public FXCircle(double radius, Paint paint, Paint outlinePaint) {
+        this(new Circle(radius), paint, outlinePaint);
     }
 
     public FXCircle(Circle circle, Paint paint, Paint outlinePaint) {
@@ -23,15 +27,19 @@ public class FXCircle extends FXShape {
 
     @Override
     protected void drawImpl(GraphicsContext g, Transform transform, FXTransform fx) {
+
         Vector2 center = circle.getCenter();
         double radius = circle.getRadius();
 
+        Vector2 top = fx.fit(transform.getTransformed(center).subtract(radius, radius));
+
+
         g.setFill(getPaint());
-        g.fillOval(center.x - radius, center.y - radius, 2 * radius, 2 * radius);
+        g.fillOval(top.x, top.y, 2 * radius * fx.getScale(), 2 * radius * fx.getScale());
 
         if (getOutlinePaint() != null) {
             g.setStroke(getOutlinePaint());
-            g.strokeOval(center.x - radius, center.y - radius, 2 * radius, 2 * radius);
+            g.strokeOval(top.x - radius, top.y, 2 * radius, 2 * radius);
         }
     }
 

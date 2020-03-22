@@ -20,4 +20,8 @@ public class FXTransform {
     public Vector2 fit(Vector2 vector) {
         return new Vector2((width / 2) + vector.x * scale + centerX, (height / 2) - vector.y * scale + centerY);
     }
+
+    public double getScale() {
+        return scale;
+    }
 }

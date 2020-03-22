@@ -4,6 +4,7 @@ import firemage.dynfx.Dyn4JPane;
 import firemage.dynfx.FXBody;
 import firemage.dynfx.FXFixture;
 import firemage.dynfx.FXSimulation;
+import firemage.dynfx.shape.FXCircle;
 import firemage.dynfx.shape.FXRectangle;
 import firemage.dynfx.shape.FXTriangle;
 import javafx.application.Application;
@@ -57,7 +58,7 @@ public class RocketDemo extends Application {
         player.addFXFixtureFromFXShape(rightFood);
         player.addFXShape(thruster);
         player.setMass(MassType.NORMAL);
-        player.translate(4, 20);
+        //player.translate(4, 20);
         simulation.addFXBody(player);
 
         FXBody floor = new FXBody();
@@ -69,7 +70,7 @@ public class RocketDemo extends Application {
         simulation.addFXBody(floor);
 
         FXBody center = new FXBody();
-        center.addFXShape(new FXRectangle(1, 1, Color.GREEN));
+        center.addFXShape(new FXCircle(1, Color.GREEN));
         simulation.addFXBody(center);
 
         Dyn4JPane dyn4JPane = new Dyn4JPane(simulation, scale);
