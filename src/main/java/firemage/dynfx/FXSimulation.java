@@ -70,6 +70,11 @@ public class FXSimulation implements StepListener {
         return bodies;
     }
 
+    // Never modify the world here!
+    public World getWorld() {
+        return world;
+    }
+
     private void runLogic(long step) {
         if (parallelLogicExecution) {
             bodies.parallelStream().forEach(body -> body.examineLogic(step));
