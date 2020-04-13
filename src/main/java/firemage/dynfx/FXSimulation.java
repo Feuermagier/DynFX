@@ -34,6 +34,11 @@ public class FXSimulation implements StepListener {
         world.addBody(body.getBody());
     }
 
+    public void removeFXBody(FXBody body) {
+        bodies.remove(body);
+        world.removeBody(body.getBody());
+    }
+
     public boolean update(double elapsedTime) {
         return world.update(elapsedTime);
     }
