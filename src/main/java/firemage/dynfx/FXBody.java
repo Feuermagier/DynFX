@@ -25,6 +25,7 @@ public class FXBody {
 
     public FXBody() {
         this.body = new Body();
+        body.setUserData(this);
         this.fixtures = new LinkedList<>();
     }
 
